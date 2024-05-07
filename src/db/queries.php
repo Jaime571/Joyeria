@@ -72,13 +72,17 @@ $getAllProductsFromBoughtOfAClient = "SELECT
 
 $minimumProductCost = "SELECT nombre, precio
                         FROM productos
-                        WHERE precio = (SELECT MIN(precio) FROM productos);";
+                        WHERE precio = (SELECT MIN(precio) FROM productos)";
 
-$maximumProductCost = "SELECT nombre, precio
-                        FROM productos
-                        WHERE precio = (SELECT MAX(precio) FROM productos);";
+$minCost = "SELECT * FROM min_cost";
+
+$maximumProductCost = "SELECT nombre, precio FROM productos WHERE precio = (SELECT MAX(precio) FROM productos)";
+
+$maxCost = "SELECT * FROM max_cost";
 
 $avgCostOfProducts = "SELECT AVG(CAST(precio AS DECIMAL(18, 2))) AS precio_promedio FROM productos";
+
+$avgCost = "SELECT * FROM avg_cost";
 
 $totalBoughtsOfClient = "SELECT COUNT(*) AS total_ventas_cliente FROM venta WHERE cliente_id = '63c75719-f4cd-4302-a25d-8dda2dc65f04'";
 

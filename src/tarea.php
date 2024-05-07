@@ -584,6 +584,87 @@
                 </tbody>
             </table>
         </div>
+        <div>
+            <h1>SELECT * FROM min_cost;</h1>
+            <?php
+            // Preparar la consulta
+            $clientes = $db->prepare($minCost);
+            // Ejecutar la consulta
+            $clientes->execute();
+            // Recuperar los resultados como un arreglo asociativo
+            $rows = $clientes->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($rows as $row) { ?>
+                        <tr>
+                            <!-- <th scope="row">1</th> -->
+                            <td><?php echo $row['nombre']?></td>
+                            <td><?php echo $row['precio']?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h1>SELECT * FROM max_cost;</h1>
+            <?php
+            // Preparar la consulta
+            $clientes = $db->prepare($maxCost);
+            // Ejecutar la consulta
+            $clientes->execute();
+            // Recuperar los resultados como un arreglo asociativo
+            $rows = $clientes->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($rows as $row) { ?>
+                        <tr>
+                            <!-- <th scope="row">1</th> -->
+                            <td><?php echo $row['nombre']?></td>
+                            <td><?php echo $row['precio']?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h1>SELECT * FROM mavg_cost;</h1>
+            <?php
+            // Preparar la consulta
+            $clientes = $db->prepare($avgCost);
+            // Ejecutar la consulta
+            $clientes->execute();
+            // Recuperar los resultados como un arreglo asociativo
+            $rows = $clientes->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($rows as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['precio_promedio']?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
