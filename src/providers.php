@@ -23,16 +23,16 @@
                         <a class="nav-link" href="index.php">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="providers.php">Proveedores</a>
+                        <a class="nav-link  active" href="#">Proveedores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ventas.php">Ventas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  active" href="#">Productos</a>
+                        <a class="nav-link" href="productos.php">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProd">
+                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
                             <i class="fa-duotone fa-circle-plus"></i>
                             Agregar
                         </a>
@@ -49,7 +49,7 @@
         <!-- Tarjeta de ubicacion -->
         <div class="text-center">
             <h1>¡Hola!, te encuentras en:</h1>
-            <h1>Productos</h1>
+            <h1>Proveedores</h1>
         </div>
         <hr>
         <!-- Deck de cartas de los clientes -->
@@ -58,7 +58,7 @@
         include_once './db/queries.php';
 
         // Preparar la consulta
-        $productos = $db->prepare($getAllProducts);
+        $productos = $db->prepare($getAllProviders);
         // Ejecutar la consulta
         $productos->execute();
         // Recuperar los resultados como un arreglo asociativo
@@ -73,11 +73,11 @@
                         <hr>
                         <!-- <h5 class="mb-5"> -->
                         <p class="mb-1">
-                            <?php echo $row['descripcion'] ?>
+                            <?php echo $row['direccion'] ?>
                         </p>
                         <!-- </h5> -->
                         <br>
-                        <span class="badge text-bg-primary align-bottom"><?php echo $row['precio'] ?></span>
+                        <span class="badge text-bg-primary align-bottom"><?php echo $row['telefono'] ?></span>
                         <br>
                     </div>
                     <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#modalEditProd" data-bs-id="<?= $row['id'] ?>">
@@ -90,9 +90,8 @@
         </div>
     </div>
     <?php include('modalEditProd.php'); ?>
-    <?php include 'modalNewProd.php'; ?>
+    <?php include 'modalNewProv.php'; ?>
     <script>
-        // TODO:Terminar Editar producto
         // Script para mostrar el modal al hacer clic en el botón
         // document.querySelectorAll('.open-modal').forEach(button => {
         //     button.addEventListener('click', () => {

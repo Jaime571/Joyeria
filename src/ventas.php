@@ -18,23 +18,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
-                <ul class="nav justify-content-center">
+                <ul class="nav justify-content-center ">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="providers.php">Proveedores</a>
+                        <a class="nav-link  active" href="providers.php">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ventas.php">Ventas</a>
+                        <a class="nav-link" href="#">Ventas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  active" href="#">Productos</a>
+                        <a class="nav-link" href="productos.php">Productos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProd">
+                    <li class="nav-item mx-2">
+                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
                             <i class="fa-duotone fa-circle-plus"></i>
-                            Agregar
+                            Registrar Compra
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                            <i class="fa-duotone fa-circle-plus"></i>
+                            Registrar Venta
                         </a>
                     </li>
                     <li class="nav-item">
@@ -49,50 +55,26 @@
         <!-- Tarjeta de ubicacion -->
         <div class="text-center">
             <h1>¡Hola!, te encuentras en:</h1>
-            <h1>Productos</h1>
+            <h1>Estadísticas</h1>
         </div>
         <hr>
-        <!-- Deck de cartas de los clientes -->
-        <?php
-        include_once './db/db_connection.php';
-        include_once './db/queries.php';
-
-        // Preparar la consulta
-        $productos = $db->prepare($getAllProducts);
-        // Ejecutar la consulta
-        $productos->execute();
-        // Recuperar los resultados como un arreglo asociativo
-        $rows = $productos->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-        <div class="d-flex flex-wrap text-center">
-            <?php foreach ($rows as $row) { ?>
-                <div class="card m-2" style="width: 21rem;" id="<?php echo $row['id']; ?>">
-                    <div class="card-body shadow">
-                        <h3 class="card-title"><?php echo $row['nombre'] ?></h3>
-                        <hr>
-                        <!-- <h5 class="mb-5"> -->
-                        <p class="mb-1">
-                            <?php echo $row['descripcion'] ?>
-                        </p>
-                        <!-- </h5> -->
-                        <br>
-                        <span class="badge text-bg-primary align-bottom"><?php echo $row['precio'] ?></span>
-                        <br>
-                    </div>
-                    <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#modalEditProd" data-bs-id="<?= $row['id'] ?>">
-                        <i class="fa-duotone fa-circle-plus"></i>
-                        Editar
-                    </a>
-                    <!-- <button class="btn text-bg-info open-modal" data-id="<?php echo $row['id']; ?>">Editar Producto</button> -->
-                </div>
-            <?php } ?>
+        <div class="row " style="height: 350px;">
+            <div class="col-md-6 mb-3 ;">
+                <a class="btn btn-success w-100 h-100 fs-1" style="background-image: linear-gradient(to right, #2bbfe4, #eaecc6); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    Resumen Ventas
+                </a>
+            </div>
+            <div class="col-md-6 mb-3">
+                <a class="btn btn-success w-100 h-100 fs-1" style="background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,52,255,1) 100%); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    Resumen Compras
+                </a>
+            </div>
         </div>
     </div>
-    <?php include('modalEditProd.php'); ?>
-    <?php include 'modalNewProd.php'; ?>
+
     <script>
-        // TODO:Terminar Editar producto
         // Script para mostrar el modal al hacer clic en el botón
         // document.querySelectorAll('.open-modal').forEach(button => {
         //     button.addEventListener('click', () => {
