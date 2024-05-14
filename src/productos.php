@@ -92,7 +92,6 @@
     <?php include('modalEditProd.php'); ?>
     <?php include 'modalNewProd.php'; ?>
     <script>
-        // TODO:Terminar Editar producto
         // Script para mostrar el modal al hacer clic en el botón
         // document.querySelectorAll('.open-modal').forEach(button => {
         //     button.addEventListener('click', () => {

@@ -32,13 +32,13 @@
                         <a class="nav-link" href="productos.php">Productos</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewCompra">
                             <i class="fa-duotone fa-circle-plus"></i>
                             Registrar Compra
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                        <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#modalNewVenta">
                             <i class="fa-duotone fa-circle-plus"></i>
                             Registrar Venta
                         </a>
@@ -73,7 +73,33 @@
             </div>
         </div>
     </div>
+    <?php
+    include './db/db_connection.php';
+    include './db/queries.php';
 
+    $queryClients = $db->prepare($getAllClients);
+    $queryClients->execute();
+    $rows = $queryClients->fetchAll(PDO::FETCH_ASSOC);
+
+    $queryProds = $db->prepare($getAllProducts);
+    $queryProds->execute();
+    $rowsProd = $queryProds->fetchAll(PDO::FETCH_ASSOC);
+
+    $queryProv = $db->prepare($getAllProviders);
+    $queryProv->execute();
+    $rowsProv = $queryProv->fetchAll(PDO::FETCH_ASSOC);
+    
+    $queryVentasClientes = $db->prepare($getAllBoughtsFromClients);
+    $queryVentasClientes->execute();
+    $rowsVentasClientes = $queryVentasClientes->fetchAll(PDO::FETCH_ASSOC);
+
+    $queryComprasProv = $db->prepare($getAllSellsFromProviders);
+    $queryComprasProv->execute();
+    $rowsComprasProv = $queryComprasProv->fetchAll(PDO::FETCH_ASSOC);
+
+    ?>
+    <?php include 'modalNewVenta.php'; ?>
+    <?php include 'modalNewCompra.php'; ?>
     <script>
         // Script para mostrar el modal al hacer clic en el botón
         // document.querySelectorAll('.open-modal').forEach(button => {

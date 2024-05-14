@@ -22,6 +22,20 @@ $getAllBoughtsFromAClient = "SELECT
                             WHERE
                                 venta.cliente_id = '63c75719-f4cd-4302-a25d-8dda2dc65f04'";
 
+$getAllBoughtsFromClients = "SELECT 
+                                clientes.nombre AS nombre,
+                                clientes.fecha_afiliacion AS fecha_afiliacion,
+                                venta.fecha AS fecha_venta,
+                                venta.tipo_pago AS pago,
+                                factura_clientes.cantidad AS cantidad
+                            FROM 
+                                venta
+                            INNER JOIN 
+                                clientes ON venta.cliente_id = clientes.id
+                            INNER JOIN 
+                                factura_clientes ON venta.id = factura_clientes.venta_id
+                            ORDER BY fecha_venta ASC";
+
 $getAllSellsFromAProvider = "SELECT 
                                 proveedores.nombre AS nombre,
                                 proveedores.direccion AS direccion,
@@ -33,6 +47,20 @@ $getAllSellsFromAProvider = "SELECT
                                 proveedores ON compras.proveedor_id = proveedores.id
                             WHERE
                                 compras.proveedor_id = 'aac88d5f-d43e-4b79-ab69-c46abd6f9571'";
+
+$getAllSellsFromProviders = "SELECT 
+                                proveedores.nombre AS nombre,
+                                proveedores.direccion AS direccion,
+                                compras.fecha AS fecha_compra,
+                                compras.tipo_pago AS pago,
+                                factura_proveedores.cantidad AS cantidad
+                            FROM 
+                                compras
+                            INNER JOIN 
+                                proveedores ON compras.proveedor_id = proveedores.id
+                            INNER JOIN 
+                                factura_proveedores ON compras.id = factura_proveedores.compra_id
+                            ORDER BY fecha_compra ASC";
 
 $getAllProductsFromSellsOfAProvider = "SELECT 
                                         proveedores.nombre AS nombre,

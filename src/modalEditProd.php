@@ -1,4 +1,4 @@
-// TODO:Terminar Editar producto
+ <!-- TODO:Terminar Editar producto -->
 <div class="modal fade" id="modalEditProd" tabindex="-1" aria-labelledby="modalEditProdLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
