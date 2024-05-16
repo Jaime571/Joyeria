@@ -1,12 +1,13 @@
-<div class="modal fade" id="modalNewCli" tabindex="-1" aria-labelledby="modalNewCliLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditClient" tabindex="-1" aria-labelledby="modalEditClientLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalNewCliLabel">Registrar Cliente</h1>
+                <h1 class="modal-title fs-5" id="modalEditClientLabel">Editar Cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="updateClient.php" method="POST" enctype="multipart/form-data">
+                <form action="updateCliente.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="id" name="id">
                     <div class="mb-3">
                         <label for="nombre" class="form-label text-bg-info rounded p-2 mb-2 text-light">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -26,7 +27,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="correo" class="form-label text-bg-info rounded p-2 mb-2 text-light">Correo:</label>
-                            <input type="email" name="correo" id="correo" class="form-control" required>
+                            <input type="text" name="correo" id="correo" class="form-control" required>
                         </div>
                     </div>
                     <div class="mb-3">

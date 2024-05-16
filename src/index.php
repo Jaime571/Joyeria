@@ -69,6 +69,7 @@
             <?php foreach ($rows as $row) { ?>
                 <div class="card m-2" style="width: 21rem;" id="<?php echo $row['id']; ?>">
                     <div class="card-body shadow">
+                        <button type="button" class="btn-close btn-close-red" aria-label="Close"></button>
                         <h3 class="card-title">
                             <?php echo $row['nombre'] ?>
                             <?php echo $row['a_paterno'] ?>
@@ -91,28 +92,73 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#Detalles" data-bs-id="<?= $row['id'] ?>">
+                    <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#modalEditClient" data-bs-id="<?= $row['id'] ?>">
                         <i class="fa-duotone fa-circle-plus"></i>
-                        Ver Info
+                        Editar
                     </a>
-                    <!-- <button class="btn text-bg-info open-modal" data-id="<?php echo $row['id']; ?>">Editar Producto</button> -->
                 </div>
             <?php } ?>
 
         </div>
+        <?php include 'modalEditClient.php'; ?>
         <?php include 'modalNewClient.php'; ?>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script>
-            // Script para mostrar el modal al hacer clic en el botón
-            document.querySelectorAll('.open-modal').forEach(button => {
-                button.addEventListener('click', () => {
-                    const clientId = button.getAttribute('data-id');
-                    const modal = document.getElementById('Detalles' + clientId);
-                    const bsModal = new bootstrap.Modal(modal);
-                    bsModal.show();
-                });
-            });
+            let editaModal = document.getElementById('modalEditClient');
+
+            editaModal.addEventListener('shown.bs.modal', event => {
+                let button = event.relatedTarget
+                let id = button.getAttribute('data-bs-id')
+
+                console.log('ID obtenido:', id);
+
+                let inputId = editaModal.querySelector('.modal-body #id')
+                let inputNombre = editaModal.querySelector('.modal-body #nombre')
+                let inputAPaterno = editaModal.querySelector('.modal-body #a_paterno')
+                let inputAMaterno = editaModal.querySelector('.modal-body #a_materno')
+                let inputTelefono = editaModal.querySelector('.modal-body #telefono')
+                let inputEmail = editaModal.querySelector('.modal-body #correo')
+
+                let url = "getCliente.php"
+                let formData = new FormData()
+                formData.append('id', id)
+
+                fetch(url, {
+                        method: "POST",
+                        body: formData
+                    }).then(response => response.json())
+                    .then(data => {
+
+                        inputId.value = id
+                        inputNombre.value = data.nombre,
+                            inputAPaterno.value = data.a_paterno,
+                            inputAMaterno.value = data.a_materno,
+                            inputTelefono.value = data.telefono,
+                            inputEmail.value = data.correo
+
+                    }).catch(err => console.log(err))
+            })
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<style>
+    .btn-close-red {
+        color: #fff;
+        /* Color del texto (icono) del botón */
+        background-color: #dc3545;
+        /* Color de fondo del botón */
+        border-color: #dc3545;
+        /* Color del borde del botón */
+    }
+
+    .btn-close-red:hover {
+        color: #fff;
+        /* Color del texto (icono) del botón al pasar el mouse */
+        background-color: #c82333;
+        /* Color de fondo del botón al pasar el mouse */
+        border-color: #bd2130;
+        /* Color del borde del botón al pasar el mouse */
+    }
+</style>

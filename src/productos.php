@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <hr>
-                                <p>Piezas disponibles</p>
+                                <p>Precio</p>
                                 <span class="badge text-bg-primary align-bottom"><?php echo $row['precio'] ?></span>
                             </div>
                             <div class="col-md-6 mb-3">
