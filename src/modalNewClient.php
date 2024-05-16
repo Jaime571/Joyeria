@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="updateClient.php" method="POST" enctype="multipart/form-data">
+                <form action="saveClient.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="nombre" class="form-label text-bg-info rounded p-2 mb-2 text-light">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="mb-3">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
                     </div>
                 </form>
             </div>
