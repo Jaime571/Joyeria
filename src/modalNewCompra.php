@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Venta</button>
+                        <button type="submit" class="btn btn-primary">Guardar Compra</button>
                     </div>
                 </form>
             </div>

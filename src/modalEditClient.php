@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
                     </div>
                 </form>
             </div>
