@@ -69,6 +69,7 @@
             <?php foreach ($rows as $row) { ?>
                 <div class="card m-2" style="width: 21rem; border: none;" id="<?php echo $row['id']; ?>">
                     <div class="card-body shadow">
+                        <button type="button" class="btn-close btn-close-red" aria-label="Close" data-bs-toggle="modal" data-bs-target="#modalEliminarProveedor" data-bs-id="<?= $row['id'] ?>"></button>
                         <h3 class="card-title"><?php echo $row['nombre'] ?></h3>
                         <hr>
                         <h5 class="mb-1">
@@ -96,9 +97,11 @@
         </div>
     </div>
     <?php include 'modalEditProveedor.php'; ?>
+    <?php include 'modalEliminarProveedor.php'; ?>
     <?php include 'modalNewProv.php'; ?>
     <script>
         let editaModal = document.getElementById('modalEditProveedor');
+        let eliminaModal = document.getElementById('modalEliminarProveedor');
 
         editaModal.addEventListener('shown.bs.modal', event => {
             let button = event.relatedTarget
@@ -122,7 +125,7 @@
                 }).then(response => response.json())
                 .then(data => {
 
-                    inputId.value = id
+                    inputId.value = id,
                     inputNombre.value = data.nombre,
                         inputDireccion.value = data.direccion,
                         inputTelefono.value = data.telefono,
@@ -130,8 +133,34 @@
 
                 }).catch(err => console.log(err))
         })
+
+        eliminaModal.addEventListener('shown.bs.modal', event => {
+            let button = event.relatedTarget
+            let id = button.getAttribute('data-bs-id')
+            eliminaModal.querySelector('.modal-footer #id').value = id
+        })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<style>
+    .btn-close-red {
+        color: #fff;
+        /* Color del texto (icono) del botón */
+        background-color: #dc3545;
+        /* Color de fondo del botón */
+        border-color: #dc3545;
+        /* Color del borde del botón */
+    }
+
+    .btn-close-red:hover {
+        color: #fff;
+        /* Color del texto (icono) del botón al pasar el mouse */
+        background-color: #c82333;
+        /* Color de fondo del botón al pasar el mouse */
+        border-color: #bd2130;
+        /* Color del borde del botón al pasar el mouse */
+    }
+</style>

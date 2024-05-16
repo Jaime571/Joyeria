@@ -69,7 +69,7 @@
             <?php foreach ($rows as $row) { ?>
                 <div class="card m-2" style="width: 21rem;" id="<?php echo $row['id']; ?>">
                     <div class="card-body shadow">
-                        <button type="button" class="btn-close btn-close-red" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-red" aria-label="Close" data-bs-toggle="modal" data-bs-target="#modalEliminarCliente" data-bs-id="<?= $row['id'] ?>"></button>
                         <h3 class="card-title">
                             <?php echo $row['nombre'] ?>
                             <?php echo $row['a_paterno'] ?>
@@ -102,8 +102,10 @@
         </div>
         <?php include 'modalEditClient.php'; ?>
         <?php include 'modalNewClient.php'; ?>
+        <?php include 'modalEliminarCliente.php'; ?>
         <script>
             let editaModal = document.getElementById('modalEditClient');
+            let eliminaModal = document.getElementById('modalEliminarCliente');
 
             editaModal.addEventListener('shown.bs.modal', event => {
                 let button = event.relatedTarget
@@ -136,6 +138,12 @@
                             inputEmail.value = data.correo
 
                     }).catch(err => console.log(err))
+            })
+
+            eliminaModal.addEventListener('shown.bs.modal', event => {
+                let button = event.relatedTarget
+                let id = button.getAttribute('data-bs-id')
+                eliminaModal.querySelector('.modal-footer #id').value = id
             })
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

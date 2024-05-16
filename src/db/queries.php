@@ -1,9 +1,9 @@
 <?php
 // Obtener todas las peliculas
-$getAllClients = "SELECT * FROM clientes";
-$getAllProducts = "SELECT * FROM productos";
+$getAllClients = "SELECT * FROM clientes WHERE estatus = 'ACTIVO'";
+$getAllProducts = "SELECT * FROM productos WHERE estatus = 'DISPONIBLE'";
 $getAllBoughts = "SELECT * FROM compras";
-$getAllProviders = "SELECT * FROM proveedores";
+$getAllProviders = "SELECT * FROM proveedores WHERE estatus = 'ACTIVO'";
 $getAllSells = "SELECT * FROM venta";
 $getAllClientBill = "SELECT * FROM factura_clientes";
 $getAllProvidersBill = "SELECT * FROM factura_proveedores";
