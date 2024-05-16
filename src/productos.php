@@ -37,9 +37,9 @@
                             Agregar
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-danger" href="tarea.php">Tarea</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- </div> -->
             </div>
