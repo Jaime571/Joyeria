@@ -1,23 +1,20 @@
 <?php
-// TODO:Terminar Editar producto
 require './db/db_connection.php';
+require 'specFuncs.php';
 
+$id = $_POST['id'];
 $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
-$precio = $_POST['precio'];
+$precio = parseToInt($_POST['precio']);
 
-$sql = "UPDATE productos SET (id, nombre, descripcion, precio)
-        VALUES ('$uuid', '$nombre', '$descripcion', $precio)
-        WHERE id = ''";
+$sql = "UPDATE productos SET nombre = '$nombre', descripcion = '$descripcion', precio = $precio WHERE id = '$id'";
 
 try {
-    $query = $db->prepare($sql);
-    // Ejecutar la consulta
-    $query->execute();
+    $consulta = $db->prepare($sql);
+    $consulta->execute();
+    header('Location: productos.php');
 } catch (PDOException $e) {
+    echo $id;
     echo "Error al insertar en la base de datos: " . $e->getMessage();
 }
-
-header('Location: productos.php');
-
 ?>

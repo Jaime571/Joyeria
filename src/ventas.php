@@ -58,15 +58,15 @@
             <h1>Estadísticas</h1>
         </div>
         <hr>
-        <div class="row " style="height: 350px;">
-            <div class="col-md-6 mb-3 ;">
-                <a class="btn btn-success w-100 h-100 fs-1" style="background-image: linear-gradient(to right, #2bbfe4, #eaecc6); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+        <div class="row " style="height: 350px; border: none;">
+            <div class="col-md-6 mb-3">
+                <a class="btn btn-success w-100 h-100 fs-1" style="background-image: linear-gradient(to right, #2bbfe4, #eaecc6); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalResumenVentas">
                     <i class="fa-duotone fa-circle-plus"></i>
                     Resumen Ventas
                 </a>
             </div>
             <div class="col-md-6 mb-3">
-                <a class="btn btn-success w-100 h-100 fs-1" style="background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,52,255,1) 100%); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalNewProv">
+                <a class="btn btn-success w-100 h-100 fs-1" style="background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,52,255,1) 100%); padding-top: 130px;" href="#" data-bs-toggle="modal" data-bs-target="#modalResumenCompras">
                     <i class="fa-duotone fa-circle-plus"></i>
                     Resumen Compras
                 </a>
@@ -100,6 +100,8 @@
     ?>
     <?php include 'modalNewVenta.php'; ?>
     <?php include 'modalNewCompra.php'; ?>
+    <?php include 'modalResumenVentas.php'; ?>
+    <?php include 'modalResumenCompras.php'; ?>
     <script>
         // Script para mostrar el modal al hacer clic en el botón
         // document.querySelectorAll('.open-modal').forEach(button => {

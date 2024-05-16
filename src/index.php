@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,14 +74,22 @@
                             <?php echo $row['a_paterno'] ?>
                             <?php echo $row['a_materno'] ?></h3>
                         <hr>
-                        <!-- <h5 class="mb-5"> -->
+                        <h6>Fecha de afiliación:</h6>
                         <p class="badge text-bg-primary align-bottom">
                             <?php echo $row['fecha_afiliacion'] ?>
                         </p>
-                        <!-- </h5> -->
-                        <!-- <br>
-                        <span class="badge text-bg-primary align-bottom"><?php echo $row['telefono'] ?></span>
-                        <br> -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <h6>Teléfono</h6>
+                                <span class="badge text-bg-primary align-bottom"><?php echo $row['telefono'] ?></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <h6>Correo</h6>
+                                <span class="badge text-bg-primary align-bottom"><?php echo $row['correo'] ?></span>
+                            </div>
+                        </div>
                     </div>
                     <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#Detalles" data-bs-id="<?= $row['id'] ?>">
                         <i class="fa-duotone fa-circle-plus"></i>
@@ -93,7 +98,7 @@
                     <!-- <button class="btn text-bg-info open-modal" data-id="<?php echo $row['id']; ?>">Editar Producto</button> -->
                 </div>
             <?php } ?>
-            
+
         </div>
         <?php include 'modalNewClient.php'; ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

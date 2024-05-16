@@ -7,7 +7,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="saveProd.php" method="POST" enctype="multipart/form-data">
+                <form action="updateProd.php" method="POST" enctype="multipart/form-data">
+                    <!-- Para editar -->
+                    <input type="hidden" id="id" name="id">
                     <div class="mb-3">
                         <label for="nombre" class="form-label text-bg-info rounded p-2 mb-2 text-light">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" require>

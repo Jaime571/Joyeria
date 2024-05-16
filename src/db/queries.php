@@ -24,16 +24,21 @@ $getAllBoughtsFromAClient = "SELECT
 
 $getAllBoughtsFromClients = "SELECT 
                                 clientes.nombre AS nombre,
-                                clientes.fecha_afiliacion AS fecha_afiliacion,
+                                -- clientes.fecha_afiliacion AS fecha_afiliacion,
                                 venta.fecha AS fecha_venta,
                                 venta.tipo_pago AS pago,
-                                factura_clientes.cantidad AS cantidad
+                                factura_clientes.cantidad AS cantidad,
+                                productos.nombre AS nombre_prod,
+                                productos.precio AS unitario,
+                                factura_clientes.cantidad * productos.precio AS precio_total
                             FROM 
                                 venta
                             INNER JOIN 
                                 clientes ON venta.cliente_id = clientes.id
                             INNER JOIN 
                                 factura_clientes ON venta.id = factura_clientes.venta_id
+                            INNER JOIN 
+                                productos ON factura_clientes.producto_id = productos.id
                             ORDER BY fecha_venta ASC";
 
 $getAllSellsFromAProvider = "SELECT 
@@ -50,16 +55,21 @@ $getAllSellsFromAProvider = "SELECT
 
 $getAllSellsFromProviders = "SELECT 
                                 proveedores.nombre AS nombre,
-                                proveedores.direccion AS direccion,
+                                -- clientes.fecha_afiliacion AS fecha_afiliacion,
                                 compras.fecha AS fecha_compra,
                                 compras.tipo_pago AS pago,
-                                factura_proveedores.cantidad AS cantidad
+                                factura_proveedores.cantidad AS cantidad,
+                                productos.nombre AS nombre_prod,
+                                productos.precio AS unitario,
+                                factura_proveedores.cantidad * productos.precio AS precio_total
                             FROM 
                                 compras
                             INNER JOIN 
                                 proveedores ON compras.proveedor_id = proveedores.id
                             INNER JOIN 
                                 factura_proveedores ON compras.id = factura_proveedores.compra_id
+                            INNER JOIN 
+                                productos ON factura_proveedores.producto_id = productos.id
                             ORDER BY fecha_compra ASC";
 
 $getAllProductsFromSellsOfAProvider = "SELECT 
@@ -115,5 +125,3 @@ $avgCost = "SELECT * FROM avg_cost";
 $totalBoughtsOfClient = "SELECT COUNT(*) AS total_ventas_cliente FROM venta WHERE cliente_id = '63c75719-f4cd-4302-a25d-8dda2dc65f04'";
 
 $totalOfProducts = "SELECT SUM(precio) AS total_ventas FROM productos";
-
-?>

@@ -67,18 +67,25 @@
 
         <div class="d-flex flex-wrap text-center">
             <?php foreach ($rows as $row) { ?>
-                <div class="card m-2" style="width: 21rem;" id="<?php echo $row['id']; ?>">
+                <div class="card m-2" style="width: 21rem; border: none;" id="<?php echo $row['id']; ?>">
                     <div class="card-body shadow">
                         <h3 class="card-title"><?php echo $row['nombre'] ?></h3>
                         <hr>
-                        <!-- <h5 class="mb-5"> -->
-                        <p class="mb-1">
+                        <h5 class="mb-1">
                             <?php echo $row['direccion'] ?>
-                        </p>
-                        <!-- </h5> -->
-                        <br>
-                        <span class="badge text-bg-primary align-bottom"><?php echo $row['telefono'] ?></span>
-                        <br>
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <h6>Teléfono</h6>
+                                <span class="badge text-bg-primary align-bottom"><?php echo $row['telefono'] ?></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <h6>Correo</h6>
+                                <span class="badge text-bg-primary align-bottom"><?php echo $row['correo'] ?></span>
+                            </div>
+                        </div>
                     </div>
                     <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#modalEditProd" data-bs-id="<?= $row['id'] ?>">
                         <i class="fa-duotone fa-circle-plus"></i>

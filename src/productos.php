@@ -71,20 +71,26 @@
                     <div class="card-body shadow">
                         <h3 class="card-title"><?php echo $row['nombre'] ?></h3>
                         <hr>
-                        <!-- <h5 class="mb-5"> -->
-                        <p class="mb-1">
+                        <h5 class="mb-1">
                             <?php echo $row['descripcion'] ?>
-                        </p>
-                        <!-- </h5> -->
-                        <br>
-                        <span class="badge text-bg-primary align-bottom"><?php echo $row['precio'] ?></span>
-                        <br>
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <p>Piezas disponibles</p>
+                                <span class="badge text-bg-primary align-bottom"><?php echo $row['precio'] ?></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <hr>
+                                <p class="mt-2">Piezas disponibles</p>
+                                <span class="badge text-bg-danger align-bottom"><?php echo $row['stock'] ?></span>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Para edirtar data-bs-id -->
                     <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#modalEditProd" data-bs-id="<?= $row['id'] ?>">
-                        <i class="fa-duotone fa-circle-plus"></i>
                         Editar
                     </a>
-                    <!-- <button class="btn text-bg-info open-modal" data-id="<?php echo $row['id']; ?>">Editar Producto</button> -->
                 </div>
             <?php } ?>
         </div>
@@ -92,15 +98,38 @@
     <?php include('modalEditProd.php'); ?>
     <?php include 'modalNewProd.php'; ?>
     <script>
-        // Script para mostrar el modal al hacer clic en el botón
-        // document.querySelectorAll('.open-modal').forEach(button => {
-        //     button.addEventListener('click', () => {
-        //         const clientId = button.getAttribute('data-id');
-        //         const modal = document.getElementById('Detalles' + clientId);
-        //         const bsModal = new bootstrap.Modal(modal);
-        //         bsModal.show();
-        //     });
-        // });
+        let editaModal = document.getElementById('modalEditProd');
+
+        editaModal.addEventListener('shown.bs.modal', event => {
+            let button = event.relatedTarget
+            let id = button.getAttribute('data-bs-id')
+
+            console.log('ID obtenido:', id);
+
+            let inputId = editaModal.querySelector('.modal-body #id')
+            let inputNombre = editaModal.querySelector('.modal-body #nombre')
+            let inputDescripcion = editaModal.querySelector('.modal-body #descripcion')
+            let inputPrecio = editaModal.querySelector('.modal-body #precio')
+
+            let url = "getProducto.php"
+            let formData = new FormData()
+            formData.append('id', id)
+
+            fetch(url, {
+                    method: "POST",
+                    body: formData
+                }).then(response => response.json())
+                .then(data => {
+
+                    inputId.value = id
+                    inputNombre.value = data.nombre
+                    inputDescripcion.value = data.descripcion
+                    inputPrecio.value = data.precio
+
+                    console.log(inputId);
+
+                }).catch(err => console.log(err))
+        })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
