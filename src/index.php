@@ -37,9 +37,13 @@
                             Agregar
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-danger" href="tarea.php">Tarea</a>
-                    </li>
+                    </li> -->
+                    <form action="backUp.php" method="post">
+                        <input type="hidden" name="id" id="id">
+                        <button type="submit" class="btn btn-danger mx-1">Respaldar Datos</button>
+                    </form>
                 </ul>
                 <!-- </div> -->
             </div>
