@@ -37,13 +37,16 @@
                             Agregar
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link text-danger" href="tarea.php">Tarea</a>
-                    </li> -->
-                    <form action="backUp.php" method="post">
+                    <li class="nav-item">
+                        <a class="btn btn-danger mx-1" href="#" data-bs-toggle="modal" data-bs-target="#modalBackUp">
+                            <i class="fa-duotone fa-circle-plus"></i>
+                            Respaldar Datos
+                        </a>
+                    </li>
+                    <!-- <form action="backUp.php" method="post">
                         <input type="hidden" name="id" id="id">
                         <button type="submit" class="btn btn-danger mx-1">Respaldar Datos</button>
-                    </form>
+                    </form> -->
                 </ul>
                 <!-- </div> -->
             </div>
@@ -107,6 +110,7 @@
         <?php include 'modalEditClient.php'; ?>
         <?php include 'modalNewClient.php'; ?>
         <?php include 'modalEliminarCliente.php'; ?>
+        <?php include 'modalBackUp.php'; ?>
         <script>
             let editaModal = document.getElementById('modalEditClient');
             let eliminaModal = document.getElementById('modalEliminarCliente');
